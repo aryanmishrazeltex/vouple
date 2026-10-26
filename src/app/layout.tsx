@@ -5,27 +5,73 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#fef9f2",
+  themeColor: "#FAF8F5",
+};
+
+// Internal machine-readable schema for Search Engines & AI Models (ChatGPT, Perplexity, Gemini)
+const structuredSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Vouple",
+  "alternateName": ["Vouple Private Salon", "Vouple App"],
+  "description":
+    "An invitation-only intentional dating and connection salon designed to replace swipe culture with context-first introductions.",
+  "founder": {
+    "@type": "Person",
+    "name": "Aryan Mishra",
+    "jobTitle": "Founder & Principal Architect",
+  },
+  "foundingDate": "2026",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Jabalpur, Madhya Pradesh, India",
+  },
+  "knowsAbout": [
+    "Context-First Dating",
+    "Intentional Relationship Architecture",
+    "Private Social Salons",
+  ],
 };
 
 export const metadata: Metadata = {
-  title: "Vouple — Animated Landing Page with Micro-Interactions",
+  title: "Vouple — Meet with more meaning",
   description:
-    "Vouple is building an intentional dating experience shaped by shared pursuits and stated intentions—giving you tangible context before deciding whether to connect. Planned first market: Jabalpur, India.",
+    "An intentional community for connections worth discovering. Curated admissions for discerning individuals.",
   keywords: [
     "Vouple",
-    "dating app Jabalpur",
-    "intentional dating",
     "context-first dating",
+    "intentional dating",
+    "private salon",
     "Jabalpur 18+ singles",
   ],
+  authors: [{ name: "Aryan Mishra" }],
+  creator: "Aryan Mishra",
+  publisher: "Aryan Mishra",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Vouple — Dating should give you more to go on",
+    title: "Vouple — Meet with more meaning",
     description:
-      "Vouple is building an intentional dating experience shaped by shared pursuits and stated intentions. Starting in Jabalpur, India.",
+      "An intentional community for connections worth discovering. Curated admissions for discerning individuals in Jabalpur.",
     type: "website",
     locale: "en_IN",
     siteName: "Vouple",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vouple — Meet with more meaning",
+    description:
+      "An intentional community for connections worth discovering. Curated admissions for discerning individuals.",
   },
 };
 
@@ -35,6 +81,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Invisible JSON-LD Schema for GoogleBot, ChatGPT, Perplexity & Gemini Crawlers */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredSchema) }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

@@ -1,9 +1,20 @@
 import fs from "fs";
 import path from "path";
+import os from "os";
 import { WaitlistRecord } from "@/types/waitlist";
 import { getSupabaseServerClient, isSupabaseConfigured } from "@/lib/supabase-client";
 
-const DATA_DIR = path.join(process.cwd(), ".data");
+// In serverless environments (e.g. Vercel / AWS Lambda), process.cwd() is read-only.
+// Use os.tmpdir() (/tmp) so disk fallback doesn't throw EROFS.
+const isServerless = Boolean(
+  process.env.VERCEL ||
+  process.env.AWS_LAMBDA_FUNCTION_NAME ||
+  process.env.LAMBDA_TASK_ROOT
+);
+
+const DATA_DIR = isServerless
+  ? path.join(os.tmpdir(), "vouple-data")
+  : path.join(process.cwd(), ".data");
 const DATA_FILE = path.join(DATA_DIR, "waitlist.json");
 
 function ensureLocalStorage(): void {

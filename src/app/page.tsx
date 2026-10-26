@@ -317,6 +317,12 @@ export default function LandingPage() {
 
           {/* Right CTA & Mobile Toggle */}
           <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/invite"
+              className="hidden sm:inline-flex items-center text-xs font-semibold text-on-surface-variant hover:text-on-surface transition-colors px-3 py-1.5 rounded-full border border-on-surface/15 hover:border-on-surface/30"
+            >
+              Claim Invite
+            </Link>
             <a
               href="#waitlist"
               onClick={(e) => scrollToSection(e, "#waitlist")}
@@ -375,6 +381,22 @@ export default function LandingPage() {
               <span>FAQ</span>
               <span className="material-symbols-outlined text-base text-on-surface-variant">arrow_forward</span>
             </a>
+            <Link
+              href="/invite"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between font-body-md text-on-surface hover:text-secondary py-2.5 px-3 rounded-lg hover:bg-surface-container transition-colors"
+            >
+              <span>Claim Invitation</span>
+              <span className="material-symbols-outlined text-base text-secondary">vpn_key</span>
+            </Link>
+            <Link
+              href="/login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-between font-body-md text-on-surface hover:text-secondary py-2.5 px-3 rounded-lg hover:bg-surface-container transition-colors"
+            >
+              <span>Member Sign In</span>
+              <span className="material-symbols-outlined text-base text-secondary">login</span>
+            </Link>
             <Link
               href="/privacy"
               onClick={() => setMobileMenuOpen(false)}
